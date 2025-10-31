@@ -17,3 +17,8 @@ phases:
     commands:
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - aws ecs update-service \
+        --cluster dhaka-cluster \
+        --service dhaka-task-service \
+        --force-new-deployment
+      #(write here code build automation command which force build our new image,ecsupdate)
